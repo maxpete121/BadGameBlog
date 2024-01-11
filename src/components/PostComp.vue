@@ -9,6 +9,9 @@
         </span>
         <h4>{{ post.title }}</h4>
         <p>{{ post.body }}</p>
+        <span>
+            <button @click="deletePost(post.id)" v-if="post.creatorId == accountId">Delete</button>
+        </span>
     </div>
 </template>
 
@@ -18,10 +21,17 @@ import { AppState } from '../AppState';
 import { computed, ref, onMounted } from 'vue';
 import { Post } from '../models/Post';
 import { RouterLink } from 'vue-router';
+import { postService } from '../services/PostService';
 export default {
     props: { post: { type: Post, required: true } },
     setup() {
-        return {};
+        async function deletePost(postId){
+            await postService.deletePost(postId)
+        }
+        return {
+            deletePost,
+            accountId: computed(()=> AppState.account.id)
+        };
     },
     components: { RouterLink }
 };

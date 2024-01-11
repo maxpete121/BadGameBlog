@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import PostComp from '../components/PostComp.vue';
 import { AppState } from '../AppState';
 import { Post } from '../models/Post';
@@ -36,7 +36,10 @@ export default {
     const postData = ref({})
     onMounted(()=>{
       getPosts()
-    })
+    });
+    watch(AppState.posts, ()=> {
+      getPosts()
+    }, {immediate: true})
     async function getPosts(){
       await postService.getPosts()
     }
