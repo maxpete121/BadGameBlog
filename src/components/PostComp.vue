@@ -1,5 +1,5 @@
 <template>
-    <div class="card col-5">
+    <div class="card col-5 mt-3 p-2">
         <span class="d-flex">
             <h3 class="me-2">Posted By:</h3>
             <h3>{{ post.creator.name }}</h3>
