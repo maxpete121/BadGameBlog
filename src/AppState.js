@@ -14,5 +14,7 @@ export const AppState = reactive({
   activeProfile: {},
 
   /**@type {Post[]} */
-  usersPosts: []
+  usersPosts: [],
+
+  comments: []
 })
