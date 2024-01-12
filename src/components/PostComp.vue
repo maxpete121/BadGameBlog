@@ -17,6 +17,7 @@
                 <button class="btn btn-outline-dark me-2">Comments</button>
                 <button class="btn btn-outline-dark" @click="deletePost(post.id)" v-if="post.creatorId == accountId">Delete</button>
             </span>
+            <CommentForm/>
         </div>
     </div>
 </template>
@@ -28,9 +29,16 @@ import { computed, ref, onMounted } from 'vue';
 import { Post } from '../models/Post';
 import { RouterLink } from 'vue-router';
 import { postService } from '../services/PostService';
+import CommentForm from './CommentForm.vue';
+import { commentService } from '../services/CommentService';
 export default {
     props: { post: { type: Post, required: true } },
     setup() {
+
+        async function getComments(){
+            await commentService.getComments()
+        }
+
         async function deletePost(postId){
             await postService.deletePost(postId)
         }
@@ -39,7 +47,7 @@ export default {
             accountId: computed(()=> AppState.account.id)
         };
     },
-    components: { RouterLink }
+    components: { RouterLink, CommentForm }
 };
 </script>
 

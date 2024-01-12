@@ -1,7 +1,10 @@
 <template>
-    <div class="component">
-        <h1>comment</h1>
-
+    <div class="">
+        <form action="">
+            <label for="">Your New Comment:</label>
+            <input maxlength="60" minlength="1" type="text">
+            <button>Post</button>
+        </form>
     </div>
 </template>
 
@@ -12,9 +15,13 @@ import { computed, ref, onMounted } from 'vue';
 import { commentService } from '../services/CommentService';
 export default {
     setup(){
+        onMounted(()=>{
+            
+        })
+        
 
     return {  }
-    },
+    }
 };
 </script>
 

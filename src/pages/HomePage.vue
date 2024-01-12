@@ -30,7 +30,8 @@ import { computed, onMounted, ref, watch } from 'vue';
 import PostComp from '../components/PostComp.vue';
 import { AppState } from '../AppState';
 import { Post } from '../models/Post';
-import {postService} from '../services/PostService.js'
+import {postService} from '../services/PostService.js';
+import CommentComp from '../components/CommentComp.vue';
 export default {
   setup() {
     const postData = ref({})
@@ -51,7 +52,7 @@ export default {
       postData,
       postPost
     }
-  }, components: {PostComp}
+  }, components: {PostComp, CommentComp}
 }
 </script>
 
